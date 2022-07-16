@@ -11,11 +11,11 @@
     An optimal solution
     <br />
     <br />
-    <a href="https://rustyxlol.github.io/repo/">View Demo</a>
+    <a href="https://rustyxlol.github.io/ttt.js">View Demo</a>
     ·
-    <a href="https://github.com/rustyxlol/repo/issues">Report Bug</a>
+    <a href="https://github.com/rustyxlol/ttt.js/issues">Report Bug</a>
     ·
-    <a href="https://github.com/rustyxlol/repo/issues">Request Feature</a>
+    <a href="https://github.com/rustyxlol/ttt.js/issues">Request Feature</a>
   </p>
 </p>
 
