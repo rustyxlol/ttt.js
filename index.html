@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <script src="script2.js" defer></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="title">Tic Tac Toe</h1>
+  </header>
+
+  <main class="main">
+    <div class="game-container">
+      <table class="board">
+        <tr>
+          <td></td>
+          <td class="vert"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="hori"></td>
+          <td class="vert hori"></td>
+          <td class="hori"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="vert"></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="bottom">
+      <div class="gameStatus">&nbsp;</div>
+      <div class="resetAndSelect">
+        <button class="resetBoard"> RESET </button>
+        <br>
+        <div class="selectionDiv">
+          <label for="selectFirst">Let bot go first?:</label>
+          <button class="bot">Yes</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>
