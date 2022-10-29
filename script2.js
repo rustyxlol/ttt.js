@@ -1,8 +1,3 @@
-// gameBoard = module
-// player = FF
-// displayController = module
-// gameController = module
-
 const gameBoard = (function () {
   let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
