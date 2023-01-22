@@ -94,7 +94,10 @@ const displayController = (function () {
   function resetBoard() {
     $bot.disabled = false;
     gameBoard.resetBoard();
+
     setMessage(String.fromCharCode(160));
+    $gameBoard.addEventListener('click', clickHandler);
+
     render();
   }
 
