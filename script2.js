@@ -1,5 +1,5 @@
 const gameBoard = (function () {
-  let gameBoard = ["", "", "", "", "", "", "", "", ""];
+  let gameBoard = ['', '', '', '', '', '', '', '', ''];
 
   const setField = (index, player) => {
     gameBoard[index] = player;
@@ -11,7 +11,7 @@ const gameBoard = (function () {
 
   const resetBoard = () => {
     for (let i = 0; i < gameBoard.length; i++) {
-      gameBoard[i] = "";
+      gameBoard[i] = '';
     }
   };
 
@@ -40,15 +40,15 @@ const Player = (player) => {
 const displayController = (function () {
   let turn = 1;
   // cache dom
-  const $gameBoard = document.querySelector(".board");
-  const $gameStatus = document.querySelector(".gameStatus");
-  const $resetBoard = document.querySelector(".resetBoard");
-  const $bot = document.querySelector(".bot");
+  const $gameBoard = document.querySelector('.board');
+  const $gameStatus = document.querySelector('.gameStatus');
+  const $resetBoard = document.querySelector('.resetBoard');
+  const $bot = document.querySelector('.bot');
 
   // events
-  $resetBoard.addEventListener("click", resetBoard);
-  $gameBoard.addEventListener("click", clickHandler);
-  $bot.addEventListener("click", botEvent);
+  $resetBoard.addEventListener('click', resetBoard);
+  $gameBoard.addEventListener('click', clickHandler);
+  $bot.addEventListener('click', botEvent);
   // functions
 
   function botEvent() {
@@ -59,7 +59,7 @@ const displayController = (function () {
 
   function setStatus(winner) {
     if (winner != null) {
-      if (winner == "draw") {
+      if (winner == 'draw') {
         setMessage(`Bummer! It's a tie`);
       } else {
         setMessage(`${winner} is the winner!`);
@@ -68,14 +68,18 @@ const displayController = (function () {
   }
 
   function setMessage(message) {
+    console.log(message);
+    if (!message.includes('tie')) {
+      $gameBoard.removeEventListener('click', clickHandler);
+    }
     $gameStatus.textContent = message;
   }
 
   function clickHandler(event) {
     let i = event.target.parentNode.rowIndex;
     i == 0 ? (i = 0) : i == 1 ? (i = 3) : (i = 6);
-    if (event.target.textContent == "") {
-      gameBoard.setField(i + event.target.cellIndex, "x");
+    if (event.target.textContent == '') {
+      gameBoard.setField(i + event.target.cellIndex, 'x');
       gameController.botMove();
     }
     render();
@@ -100,7 +104,7 @@ const displayController = (function () {
     for (let i = 0; i < board.rows.length; i++) {
       for (let j = 0; j < board.rows[i].cells.length; j++) {
         board.rows[i].cells[j].innerHTML =
-          "<div class='content'>" + array[k++] + "</div>";
+          "<div class='content'>" + array[k++] + '</div>';
       }
     }
   }
@@ -129,28 +133,28 @@ const gameController = (function () {
     let move;
     let bestValue = Infinity;
     for (let i = 0; i < 9; i++) {
-      if (boardArray[i] == "") {
-        boardArray[i] = "o";
+      if (boardArray[i] == '') {
+        boardArray[i] = 'o';
         let value = miniMax(boardArray, false);
-        boardArray[i] = "";
+        boardArray[i] = '';
         if (value < bestValue) {
           move = i;
           bestValue = value;
         }
       }
     }
-    gameBoard.setField(move, "o");
+    gameBoard.setField(move, 'o');
   }
 
   function miniMax(boardArray, isMaximizing) {
     let winner = getWinner();
-    if (winner == "x") {
+    if (winner == 'x') {
       return +10;
     }
-    if (winner == "o") {
+    if (winner == 'o') {
       return -10;
     }
-    if (winner == "draw" || !isEmpty()) {
+    if (winner == 'draw' || !isEmpty()) {
       return 0;
     }
 
@@ -158,11 +162,11 @@ const gameController = (function () {
     if (isMaximizing) {
       let bestValue = 9999;
       for (let i = 0; i < 9; i++) {
-        if (boardArray[i] == "") {
-          boardArray[i] = "o";
+        if (boardArray[i] == '') {
+          boardArray[i] = 'o';
           let value = miniMax(boardArray, !isMaximizing);
           bestValue = Math.min(bestValue, value);
-          boardArray[i] = "";
+          boardArray[i] = '';
         }
       }
       return bestValue;
@@ -171,11 +175,11 @@ const gameController = (function () {
     else {
       let bestValue = -9999;
       for (let i = 0; i < 9; i++) {
-        if (boardArray[i] == "") {
-          boardArray[i] = "x";
+        if (boardArray[i] == '') {
+          boardArray[i] = 'x';
           let value = miniMax(boardArray, !isMaximizing);
           bestValue = Math.max(bestValue, value);
-          boardArray[i] = "";
+          boardArray[i] = '';
         }
       }
       return bestValue;
@@ -184,7 +188,7 @@ const gameController = (function () {
 
   function isEmpty() {
     for (let i = 0; i < board.length; i++) {
-      if (board[i] == "") {
+      if (board[i] == '') {
         return true;
       }
     }
@@ -207,7 +211,7 @@ const gameController = (function () {
       return winner;
     }
     if (isEmpty() == false) {
-      return "draw";
+      return 'draw';
     }
     return null;
   }
